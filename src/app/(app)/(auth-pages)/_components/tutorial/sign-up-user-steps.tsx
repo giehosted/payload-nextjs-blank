@@ -1,18 +1,17 @@
-import Link from "next/link";
-import { TutorialStep } from "./tutorial-step";
-import { ArrowUpRight } from "lucide-react";
+import Link from "next/link"
+import { TutorialStep } from "./tutorial-step"
+import { ArrowUpRight } from "lucide-react"
 
 export default function SignUpUserSteps() {
   return (
     <ol className="flex flex-col gap-6">
-      {process.env.VERCEL_ENV === "preview" ||
-      process.env.VERCEL_ENV === "production" ? (
+      {process.env.VERCEL_ENV === "preview" || process.env.VERCEL_ENV === "production" ? (
         <TutorialStep title="Set up redirect urls">
           <p>It looks like this App is hosted on Vercel.</p>
           <p className="mt-4">
             This particular deployment is
             <span className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-xs font-medium text-secondary-foreground border">
-              "{process.env.VERCEL_ENV}"
+              {process.env.VERCEL_ENV}
             </span>{" "}
             on
             <span className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-xs font-medium text-secondary-foreground border">
@@ -24,9 +23,7 @@ export default function SignUpUserSteps() {
             You will need to{" "}
             <Link
               className="text-primary hover:text-foreground"
-              href={
-                "https://supabase.com/dashboard/project/_/auth/url-configuration"
-              }
+              href={"https://supabase.com/dashboard/project/_/auth/url-configuration"}
             >
               update your Supabase project
             </Link>{" "}
@@ -73,16 +70,13 @@ export default function SignUpUserSteps() {
       <TutorialStep title="Sign up your first user">
         <p>
           Head over to the{" "}
-          <Link
-            href="/sign-up"
-            className="font-bold hover:underline text-foreground/80"
-          >
+          <Link href="/sign-up" className="font-bold hover:underline text-foreground/80">
             Sign up
           </Link>{" "}
-          page and sign up your first user. It's okay if this is just you for
-          now. Your awesome idea will have plenty of users later!
+          {`page and sign up your first user. It's okay if this is just you for now. Your awesome idea
+          will have plenty of users later!`}
         </p>
       </TutorialStep>
     </ol>
-  );
+  )
 }
