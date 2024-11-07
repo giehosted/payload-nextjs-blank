@@ -130,6 +130,8 @@ export interface Media {
 export interface StorefrontUser {
   id: number;
   email: string;
+  name?: string | null;
+  roles?: ('admin' | 'customer')[] | null;
   purchases?: (number | Product)[] | null;
   cart?: {
     items?: CartItems;
@@ -257,6 +259,8 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface StorefrontUsersSelect<T extends boolean = true> {
   email?: T;
+  name?: T;
+  roles?: T;
   purchases?: T;
   cart?:
     | T

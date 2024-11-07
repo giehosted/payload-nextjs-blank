@@ -1,4 +1,7 @@
 import type { CollectionConfig } from "payload"
+import { resolveDuplicatePurchases } from "./hooks/resolveDuplicatePurchases"
+import { admins } from "@/payload/access/admins"
+import { ensureFirstUserIsAdmin } from "./hooks/ensureFirstUserIsAdmin"
 
 export const StorefrontUsers: CollectionConfig = {
   slug: "storefront-users",
@@ -12,41 +15,41 @@ export const StorefrontUsers: CollectionConfig = {
       type: "text",
       required: true,
     },
-    /* {
+    {
       name: "name",
       type: "text",
-    }, */
-    /* {
-      name: 'roles',
-      type: 'select',
+    },
+    {
+      name: "roles",
+      type: "select",
       access: {
         create: admins,
         read: admins,
         update: admins,
       },
-      defaultValue: ['customer'],
+      defaultValue: ["customer"],
       hasMany: true,
-      hooks: {
-        beforeChange: [ensureFirstUserIsAdmin],
-      },
+      // hooks: {
+      //   beforeChange: [ensureFirstUserIsAdmin],
+      // },
       options: [
         {
-          label: 'admin',
-          value: 'admin',
+          label: "admin",
+          value: "admin",
         },
         {
-          label: 'customer',
-          value: 'customer',
+          label: "customer",
+          value: "customer",
         },
       ],
-    }, */
+    },
     {
       name: "purchases",
       type: "relationship",
       hasMany: true,
-      /* hooks: {
+      hooks: {
         beforeChange: [resolveDuplicatePurchases],
-      }, */
+      },
       label: "Purchases",
       relationTo: "products",
     },

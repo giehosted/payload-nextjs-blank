@@ -1,15 +1,23 @@
-/* import type { FieldHook } from "payload/types"
+import { StorefrontUser } from "@/payload-types"
+import type { FieldHook } from "payload"
 
-import type { User } from "../../../payload-types"
+interface Purchase {
+  id: string | number // Replace this with the actual type of `id` if different
+}
 
-export const resolveDuplicatePurchases: FieldHook<User> = async ({ operation, value }) => {
+export const resolveDuplicatePurchases: FieldHook<StorefrontUser> = async ({
+  operation,
+  value,
+}) => {
   if ((operation === "create" || operation === "update") && value) {
     return Array.from(
       new Set(
-        value?.map((purchase) => (typeof purchase === "object" ? purchase.id : purchase)) || [],
+        value?.map((purchase: Purchase) =>
+          typeof purchase === "object" ? purchase.id : purchase,
+        ) || [],
       ),
     )
   }
 
   return
-} */
+}
