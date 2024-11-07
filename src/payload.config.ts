@@ -10,6 +10,10 @@ import { Users } from "./collections/Users"
 import { Media } from "./collections/Media"
 import { StorefrontUsers } from "./collections/StorefrontUsers"
 import { Products } from "./collections/Products"
+import { Pages } from "./collections/Pages"
+import { Settings } from "./payload/globals/Settings"
+import { Header } from "./payload/globals/Header"
+import { Footer } from "./payload/globals/Footer"
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -21,7 +25,8 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, StorefrontUsers, Products],
+  collections: [Users, Media, StorefrontUsers, Products, Pages],
+  globals: [Settings, Header, Footer],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
